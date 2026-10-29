@@ -1,27 +1,37 @@
-# Explication Projet
+# Explication du projet
+
+Ce projet montre comment utiliser le module `readline` de Node.js pour demander une valeur à l'utilisateur dans le terminal et l'afficher après conversion en nombre.
+
+## Code principal
 
 ```js
-// 1. On importe le module natif de Node.js qui permet de lire
-//    ce que l'utilisateur tape dans le terminal
 const readline = require("node:readline");
-// 2. On crée une interface de communication avec le terminal
-//    - input  : on lit ce que l'utilisateur écrit (process.stdin)
-//    - output : on écrit dans le terminal (process.stdout)
+
 const rl = readline.createInterface({
-   input: process.stdin,
-   output: process.stdout,
+  input: process.stdin,
+  output: process.stdout,
 });
-/ 3. On pose une question à l'utilisateur
-//    La fonction de callback (answer) => { ... } est exécutée
-//    uniquement quand l'utilisateur appuie sur Entrée
+
 rl.question("Entrez un nombre : ", (answer) => {
-    // 4. On convertit la réponse (qui est toujours une chaîne de caractères)
-    //    en un vrai nombre grâce à Number()
-    const number = Number(answer);
-
-    // 5. On affiche le nombre converti dans le terminal
-    console.log("le nombre est:", number);
-
-    // 6. On ferme proprement l'interface pour terminer le programme
-    rl.close();
+  const number = Number(answer);
+  console.log("Le nombre est :", number);
+  rl.close();
 });
+```
+
+## Explication
+
+1. On importe le module `readline` de Node.js.
+2. On crée une interface de communication avec le terminal.
+3. On pose une question à l'utilisateur avec `rl.question()`.
+4. La réponse est une chaîne de caractères ; on la convertit en nombre avec `Number()`.
+5. On affiche le résultat dans le terminal.
+6. On ferme proprement l'interface avec `rl.close()`.
+
+## Comment lancer le projet
+
+```bash
+node index.js
+```
+
+Ensuite, entrez un nombre dans le terminal pour voir le résultat affiché.
